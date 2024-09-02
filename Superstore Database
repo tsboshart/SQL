@@ -25,3 +25,23 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
+-- order the items by price.
+SELECT item_name, price
+FROM superstore
+ORDER BY price;
+-- sum of item prices
+SELECT SUM(price),item_name
+FROM superstore
+GROUP BY item_name;
+-- statistics about the price for items in the category of Kitchen Supplies
+SELECT 
+    AVG(price) AS average_price,
+    MIN(price) AS minimum_price,
+    MAX(price) AS maximum_price
+FROM superstore
+WHERE category = 'Kitchen Supplies';
+-- Total value of items in stock for the Electronics category
+SELECT 
+    SUM(price * stock_quantity) AS total_stock_value
+FROM superstore
+WHERE category = 'Electronics';
